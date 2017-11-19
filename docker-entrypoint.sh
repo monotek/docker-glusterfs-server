@@ -13,12 +13,12 @@ if [ "$1" = 'glusterfs-server' ]; then
     echo "creating ${GLUSTERFS_DIR} directory"
     mkdir -p "${GLUSTERFS_DIR}"
 
-    gluster volume create ${GLUSTERFS_VOLUME} ${GLUSTERFS_HOSTNAME}:${GLUSTERFS_DIR} force
-  fi
+    if [ "${GLUSTERFS_TMPFS}" = "true" ]; then
+      echo "creating tmpfs"
+      mount -t tmpfs -o size=${GLUSTERFS_TMPFS_SIZE} none ${GLUSTERFS_DIR}
+    fi
 
-  if [ "${GLUSTERFS_TMPFS}" = "true" ]; then
-    echo "creating tmpfs"
-    mount -t tmpfs -o size=${GLUSTERFS_TMPFS_SIZE} none ${GLUSTERFS_DIR}
+    gluster volume create ${GLUSTERFS_VOLUME} ${GLUSTERFS_HOSTNAME}:${GLUSTERFS_DIR} force
   fi
 
   echo "starting cluster volume"
