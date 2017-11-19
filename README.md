@@ -5,5 +5,5 @@ glusterfs serving 1gb tmpfs volume with name gv0
 Run:
 * docker run --rm --name glusterfs-server --privileged=true -ti monotek/docker-glusterfs-server
 
-Mount on client:
+Mount on client (needs '--privileged=true' too):
 * mount -t glusterfs glusterfs-server:/gv0 /mnt
