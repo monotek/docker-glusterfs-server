@@ -7,7 +7,7 @@ ARG GLUSTERFS_VERSION=3.12
 ENV GLUSTERFS_DIR /opt/zammad
 ENV GLUSTERFS_TMPFS true
 ENV GLUSTERFS_TMPFS_SIZE 1G
-ENV GLUSTERFS_VOLUME glusterfsvolume
+ENV GLUSTERFS_VOLUME gv0
 
 RUN apt-get update && \
     apt-get -y install software-properties-common && \
