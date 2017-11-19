@@ -6,10 +6,10 @@ if [ "$1" = 'glusterfs-server' ]; then
   GLUSTERFS_HOSTNAME="$(hostname)"
 
   echo "starting glusterfs-server"
-  /usr/sbin/glusterd /var/run/glusterd.pid --debug &
+  /usr/sbin/glusterd -p /var/run/glusterd.pid --debug &
   sleep 3
 
-  if [ ! -d "${GLUSTERFS_DIR}" ]; then
+  if [ ! -d ${GLUSTERFS_DIR} ]; then
     echo "creating ${GLUSTERFS_DIR} directory"
     mkdir -p "${GLUSTERFS_DIR}"
 
