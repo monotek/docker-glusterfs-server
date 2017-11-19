@@ -18,10 +18,11 @@ if [ "$1" = 'glusterfs-server' ]; then
       mount -t tmpfs -o size=${GLUSTERFS_TMPFS_SIZE} none ${GLUSTERFS_DIR}
     fi
 
+    echo "creating gluster volume ${GLUSTERFS_VOLUME}"
     gluster volume create ${GLUSTERFS_VOLUME} ${GLUSTERFS_HOSTNAME}:${GLUSTERFS_DIR} force
   fi
 
-  echo "starting cluster volume"
+  echo "starting cluster volume ${GLUSTERFS_VOLUME}"
   gluster volume start ${GLUSTERFS_VOLUME}
   gluster volume info
 
