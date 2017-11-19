@@ -18,6 +18,7 @@ if [ "$1" = 'glusterfs-server' ]; then
 
   echo "creating glusterfs mount"
   gluster volume create ${GLUSTERFS_VOLUME} ${GLUSTERFS_HOSTNAME}:${GLUSTERFS_DIR} force
+  gluster volume start ${GLUSTERFS_VOLUME}
   gluster volume info
 
   sleep infinity
